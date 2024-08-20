@@ -90,7 +90,7 @@ def cantidad_filmaciones_dia(dia: str):
         'domingo': 'sunday'
     }
     # Leer el dataset
-    df_movies = pd.read_csv('Movies/movies_dataset.csv')
+    df_movies = pd.read_csv('movies_dataset.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
 

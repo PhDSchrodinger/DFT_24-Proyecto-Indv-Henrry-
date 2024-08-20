@@ -1,0 +1,10 @@
+pandas
+nympy
+
+fastapi uvicorn
+"fastapi[all]"
+show fastapi
+dtale
+ipywidgets
+list
+seaborn

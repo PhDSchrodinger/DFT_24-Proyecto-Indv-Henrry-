@@ -1,6 +1,6 @@
 pandas
 nympy
-
+json
 fastapi uvicorn
 "fastapi[all]"
 show fastapi

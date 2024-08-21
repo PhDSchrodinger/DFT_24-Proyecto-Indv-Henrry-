@@ -100,7 +100,7 @@ Se creó un video demostrativo de menos de 7 minutos que muestra el funcionamien
 
 ## Instrucciones para Ejecutar
 
-1. Clona este repositorio.
+1. Tener repositorio listo para el Render
 2. Instala las dependencias con `pip install -r requirements.txt`.
 3. Ejecuta la API con el comando `uvicorn app.main:app --reload`.
 4. Accede a `http://127.0.0.1:8000` para probar los endpoints.
@@ -108,6 +108,8 @@ Se creó un video demostrativo de menos de 7 minutos que muestra el funcionamien
 ## Conclusión
 
 Este proyecto abarca desde la limpieza y transformación de datos hasta el desarrollo y despliegue de un sistema de recomendación basado en Machine Learning. ¡Espero que lo disfruten tanto como yo disfruté desarrollarlo!
+
+# Dentro de la carpeta Movies estan los CSV con las transormaciones solicitadas
 
 ---
 

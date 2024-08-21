@@ -7,4 +7,4 @@ anyio==4.4.0
 click==8.1.7
 colorama==0.4.6
 fastapi==0.112.0
-scikit-learn==2.1.0
+scikit-learn==1.5.1

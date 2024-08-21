@@ -18,6 +18,9 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"Hello": "World, I am Alain"}
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 # Cargar el dataset
 df_Movies_Dc_release_month = pd.read_csv('Movies/Movies_Dc_release_month.csv')

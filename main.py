@@ -265,7 +265,7 @@ num_peliculas = len(df)
 print(f"El número de películas es: {num_peliculas}")
 
 # Reducir el tamaño del conjunto de datos
-df = df.sample(n=5000, random_state=42)
+df = df.sample(n=3000, random_state=42)
 print(df.head())
 
 # Vectorización de los títulos y descripciones

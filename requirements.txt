@@ -1,8 +1,13 @@
-pandas
-nympy
-json
-fastapi uvicorn
-"fastapi[all]"
+pandas==2.2.2
+nympy==2.0.1
+fastapi==0.112.0
+uvicorn==0.30.6
+annotated-types==0.7.0
+anyio==4.4.0
+click==8.1.7
+colorama==0.4.6
+fastapi==0.112.0
+
 show fastapi
 dtale
 ipywidgets

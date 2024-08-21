@@ -250,9 +250,9 @@ def get_actor(nombre_actor: str):
 
 
 # Combinar los datasets en uno solo
-df1 = pd.read_csv('Movies/df1.csv')
-df2 = pd.read_csv('Movies/cast.csv')
-df = pd.concat([df1, df2])
+df = pd.read_csv('Movies/df1.csv')
+######df2 = pd.read_csv('Movies/cast.csv')
+######df = pd.concat([df1, df2])
 
 # Seleccionar las columnas relevantes
 df = df[['title', 'overview']]

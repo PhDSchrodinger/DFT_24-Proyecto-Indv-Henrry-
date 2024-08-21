@@ -36,7 +36,7 @@ meses = {
     "diciembre": 12
 }
 
-
+##### F1
 #### def cantidad_filmaciones_mes( Mes ): 
         # Se ingresa un mes en idioma Español. Debe devolver la cantidad de películas que
         #fueron estrenadas en el mes consultado en la totalidad del dataset.
@@ -63,6 +63,7 @@ def cantidad_de_filmaciones_al_mes(mes: str):
     
     return {"mensaje": f"{cantidad_de_filmaciones_al_mes} cantidad de películas fueron estrenadas en el mes de: {mes}"}
 
+##### F2
 ####   def cantidad_filmaciones_dia( Dia ): Se ingresa un día en idioma Español. 
         # Debe devolver la cantidad de películas que fueron estrenadas en día consultado 
         # en la totalidad del dataset.
@@ -90,7 +91,7 @@ def cantidad_filmaciones_dia(dia: str):
         'domingo': 'sunday'
     }
     # Leer el dataset
-    df_movies = pd.read_csv('movies_dataset.csv')
+    df_movies = pd.read_csv('release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
 
@@ -110,7 +111,7 @@ def cantidad_filmaciones_dia(dia: str):
     # Traducir el día al español
     dia = dias_semana_esp.get(dia, dia)
     return {"mensaje": f"{cantidad_peliculas_en_el_dia} cantidad de películas fueron estrenadas en el día {dia}"}
-
+##### F3
 ###  def score_titulo( titulo_de_la_filmación ): 
     # Se ingresa el título de una filmación esperando como respuesta el título, 
     # el año de estreno y el score.
@@ -119,7 +120,7 @@ def cantidad_filmaciones_dia(dia: str):
 # Función para obtener el score de una película por título
 def score_titulo(titulo_de_la_filmacion):
     # Leer el dataset
-    df_movies = pd.read_csv('Movies/movies_dataset.csv')
+    df_movies = pd.read_csv('release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
     # Convertir la columna 'original_title' a minúsculas
@@ -143,7 +144,7 @@ def score_titulo(titulo_de_la_filmacion):
     return {"mensaje": mensaje}
 
 
-
+##### F4
 ###    def votos_titulo( titulo_de_la_filmación ): Se ingresa el título de una 
     # filmación esperando como respuesta el título, la cantidad de votos y el valor promedio 
     # de las votaciones. La misma variable deberá de contar con al menos 2000 valoraciones, 
@@ -155,7 +156,7 @@ def score_titulo(titulo_de_la_filmacion):
 @app.get("/peliculas/titulo_votos/{titulo_de_la_filmacion}")
 def votos_titulo(titulo_de_la_filmacion):
     # Leer el dataset
-    df_movies = pd.read_csv('Movies/movies_dataset.csv')
+    df_movies = pd.read_csv('release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
     # Convertir la columna 'original_title' a minúsculas
@@ -191,7 +192,7 @@ def votos_titulo(titulo_de_la_filmacion):
     return {"mensaje": mensaje}
 
 
-
+##### F5
 ### def get_actor( nombre_actor ): Se ingresa el nombre de un actor que se encuentre dentro de 
     ## un dataset debiendo devolver el éxito del mismo medido a través del retorno. Además, 
     ## la cantidad de películas que en las que ha participado y el promedio de retorno. 

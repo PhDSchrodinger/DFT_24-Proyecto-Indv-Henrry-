@@ -233,3 +233,75 @@ def get_actor(nombre_actor: str):
         mensaje = f"No se encontró al actor {nombre_actor} en el dataset"
 
     return {"mensaje": mensaje}
+
+
+##### F7  falta el F6
+#### def recomendacion( titulo ): Se ingresa el nombre de una 
+    ### película y te recomienda las similares en una lista de 5 valores.
+
+    
+
+
+# Combinar los datasets en uno solo
+df1 = pd.read_csv('Movies/df1.csv')
+df2 = pd.read_csv('Movies/cast.csv')
+df = pd.concat([df1, df2])
+
+# Seleccionar las columnas relevantes
+df = df[['title', 'overview']]
+
+# Llenar valores nulos en la columna 'overview'
+df['overview'] = df['overview'].fillna('')
+
+# Eliminar filas sin título de película
+df = df.dropna(subset=['title'])
+
+# Ver el número de películas después de eliminar filas sin título
+num_peliculas = len(df)
+print(f"El número de películas es: {num_peliculas}")
+
+# Reducir el tamaño del conjunto de datos
+df = df.sample(n=10000, random_state=42)
+print(df.head())
+
+# Vectorización de los títulos y descripciones
+tfidf = TfidfVectorizer(stop_words='english')
+tfidf_matrix = tfidf.fit_transform(df['title'] + " " + df['overview'])
+
+# Verificar que la matriz TF-IDF es dispersa
+print(type(tfidf_matrix))  # Debería imprimir <class 'scipy.sparse.csr.csr_matrix'>
+
+# Cálculo de la similitud del coseno
+cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
+
+#Ruta de la API para la recomendación
+@app.get("/peli/{titulo}")
+# Función de recomendación
+def recomendacion(titulo:str):
+    # Normalizar el título de entrada
+    titulo = titulo.strip().lower()
+    
+    # Normalizar los títulos en el DataFrame
+    df['title_normalized'] = df['title'].str.strip().str.lower()
+    
+    # Verificar si el título existe en el DataFrame
+    if titulo not in df['title_normalized'].values:
+        return f"No se encontró la película con el título '{titulo}'"
+    
+    # Obtener el índice de la película que coincide con el título
+    idx = df[df['title_normalized'] == titulo].index[0]
+    
+    # Obtener las puntuaciones de similitud de todas las películas con esa película
+    sim_scores = list(enumerate(cosine_sim[idx]))
+    
+    # Ordenar las películas basadas en las puntuaciones de similitud
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+    
+    # Obtener los índices de las 5 películas más similares
+    sim_scores = sim_scores[1:6]
+    
+    # Obtener los títulos de las películas más similares
+    movie_indices = [i[0] for i in sim_scores]
+    recomendaciones = df['title'].iloc[movie_indices].tolist()
+    
+    return{"Recomendaciones": recomendaciones}

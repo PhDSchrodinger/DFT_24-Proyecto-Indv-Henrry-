@@ -3,6 +3,8 @@ import pandas as pd
 import json
 from pandas import json_normalize
 import ast
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 #Esto es en la terminal o en render
 # crear entorno virtual:  python -m venv env
 #ejecutarlo o activarlo: .\env\Scripts\activate

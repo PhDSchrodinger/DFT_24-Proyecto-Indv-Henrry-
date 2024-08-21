@@ -4,6 +4,8 @@ import json
 from pandas import json_normalize
 import ast
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 #Esto es en la terminal o en render
 # crear entorno virtual:  python -m venv env

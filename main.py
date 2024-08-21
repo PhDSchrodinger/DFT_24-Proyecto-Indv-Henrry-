@@ -16,7 +16,7 @@ def read_root():
     return {"Hello": "World, I am Alain"}
 
 # Cargar el dataset
-df_Movies_Dc_release_month = pd.read_csv('Movies_Dc_release_month.csv')
+df_Movies_Dc_release_month = pd.read_csv('Movies/Movies_Dc_release_month.csv')
 
 # Convertir todas las cadenas a minúsculas
 
@@ -44,7 +44,7 @@ meses = {
             ##          mes de X
 @app.get("/peliculas/{mes}")
 def cantidad_de_filmaciones_al_mes(mes: str):
-    df_Movies_Dc_release_month = pd.read_csv('Movies_Dc_release_month.csv')
+    df_Movies_Dc_release_month = pd.read_csv('Movies/Movies_Dc_release_month.csv')
     mes = mes.lower()  # Convertir el parámetro a minúsculas
     if mes not in meses:
         raise HTTPException(status_code=400, detail="Mes no valido")
@@ -91,7 +91,7 @@ def cantidad_filmaciones_dia(dia: str):
         'domingo': 'sunday'
     }
     # Leer el dataset
-    df_movies = pd.read_csv('release_title_df.csv')
+    df_movies = pd.read_csv('Movies/release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
 
@@ -120,7 +120,7 @@ def cantidad_filmaciones_dia(dia: str):
 # Función para obtener el score de una película por título
 def score_titulo(titulo_de_la_filmacion):
     # Leer el dataset
-    df_movies = pd.read_csv('release_title_df.csv')
+    df_movies = pd.read_csv('Movies/release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
     # Convertir la columna 'original_title' a minúsculas
@@ -156,7 +156,7 @@ def score_titulo(titulo_de_la_filmacion):
 @app.get("/peliculas/titulo_votos/{titulo_de_la_filmacion}")
 def votos_titulo(titulo_de_la_filmacion):
     # Leer el dataset
-    df_movies = pd.read_csv('release_title_df.csv')
+    df_movies = pd.read_csv('Movies/release_title_df.csv')
     # Convertir la columna 'release_date' a formato fecha
     df_movies['release_date'] = pd.to_datetime(df_movies['release_date'], errors='coerce')
     # Convertir la columna 'original_title' a minúsculas
